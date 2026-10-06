@@ -1,5 +1,4 @@
-name: Test di integrazione Separati
-
+name: Test di integrazione
 
 on:
   push:
@@ -32,25 +31,25 @@ jobs:
       - name: Run build
         run: npm run build --if-present
 
-    test:
-      needs: build
-      runs-on: ubuntu-latest
+  test:
+    needs: build
+    runs-on: ubuntu-latest
 
-      strategy:
-        matrix:
-          node-version: [14.x, 16.x, 18.x, 26.x]
+    strategy:
+      matrix:
+        node-version: [14.x, 16.x, 18.x, 26.x]
 
-      steps:
-        - name: Checkout repository
-          uses: actions/checkout@v3
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-        - name: Setup Node.js
-          uses: actions/setup-node@v3
-          with:
-            node-version: ${{ matrix.node-version }}
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
 
-        - name: Install dependencies
-          run: npm install
+      - name: Install dependencies
+        run: npm install
 
-        - name: Run tests
-          run: npm run test
+      - name: Run tests
+        run: npm test
