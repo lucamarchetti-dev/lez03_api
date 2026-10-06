@@ -12,8 +12,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 // Configura l'accesso
-const host = "127.0.0.1";
-const port = 4000;
+const host = "0.0.0.0";
+const port = process.env.PORT || 4000;
 
 app.use("/students", studentiRouter);
 app.use("/exams", esamiRouter);

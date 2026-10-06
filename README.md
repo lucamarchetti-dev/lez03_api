@@ -35,6 +35,18 @@ npm start
 
 Il server sarà attivo su http://127.0.0.1:4000.
 
+## Avvio con Docker
+
+Dalla cartella del progetto, crea l'immagine e avvia il container:
+
+```bash
+docker build -t studenti-api .
+docker run --rm -p 4000:4000 studenti-api
+```
+
+L'API sarà raggiungibile su http://127.0.0.1:4000. La porta interna può essere
+configurata con la variabile d'ambiente `PORT`.
+
 ## Endpoint disponibili
 
 ### 1. Recupera tutti gli studenti
