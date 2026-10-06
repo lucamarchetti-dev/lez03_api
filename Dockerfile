@@ -13,3 +13,4 @@ EXPOSE 4000
 USER node
 
 CMD ["node", "app.js"]
+ 
