@@ -80,27 +80,48 @@ describe("Student Management API", () => {
         });
     });
 
-    // Test per l'endpoint PATCH /students/:cod
-    describe("PATCH /students/:cod", () => {
-        it("Dovrebbe modificare solo i campi inviati", (done) => {
+    // Test per l'endpoint PUT /students/:cod
+    describe("PUT /students/:cod", () => {
+        it("Dovrebbe sostituire i dati dello studente", (done) => {
             chai.request(app)
-                .patch("/students/stud2")
-                .send({ corso: "Economia" })
+                .put("/students/stud2")
+                .send({
+                    nome: "Marco",
+                    cognome: "Bianchi",
+                    email: "marco.bianchi@example.it",
+                    corso: "Economia"
+                })
                 .end((err, res) => {
                     expect(res).to.have.status(200);
                     expect(res.body.status).to.equal("SUCCESS");
                     expect(res.body.data.corso).to.equal("Economia");
-                    expect(res.body.data.nome).to.equal("Marco");
+                    expect(res.body.data.email).to.equal("marco.bianchi@example.it");
                     done();
                 });
         });
 
         it("Dovrebbe restituire un errore se lo studente non esiste", (done) => {
             chai.request(app)
-                .patch("/students/nonEsistente")
-                .send({ nome: "x" })
+                .put("/students/nonEsistente")
+                .send({
+                    nome: "X",
+                    cognome: "Y",
+                    email: "x.y@example.it",
+                    corso: "Test"
+                })
                 .end((err, res) => {
                     expect(res).to.have.status(404);
+                    expect(res.body.status).to.equal("ERROR");
+                    done();
+                });
+        });
+
+        it("Dovrebbe rifiutare i campi mancanti", (done) => {
+            chai.request(app)
+                .put("/students/stud2")
+                .send({ corso: "Economia" })
+                .end((err, res) => {
+                    expect(res).to.have.status(400);
                     expect(res.body.status).to.equal("ERROR");
                     done();
                 });

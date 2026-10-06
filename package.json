@@ -1,7 +1,7 @@
 {
   "name": "lez02_api_test",
   "version": "1.0.0",
-  "description": "Questa API consente di gestire studenti, permettendo di crearli, recuperarli, aggiornarli e cancellarli.",
+  "description": "API per gestire studenti, esami e iscrizioni in memoria.",
   "main": "app.js",
   "scripts": {
     "start": "nodemon app.js",
