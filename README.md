@@ -213,7 +213,7 @@ Rimuove l'iscrizione identificata dal codice.
 
 ## Note
 
-- L'API parte con due studenti di esempio.
+- L'API parte con 22 studenti di esempio.
 - L'API parte con due esami di esempio; le iscrizioni iniziano vuote.
 - I dati sono conservati in memoria e non sono persistenti: al riavvio del server vengono ripristinati i dati iniziali.
 - La struttura usa `routes/` per gli endpoint, `controllers/` per la logica e `data/database.js` per gli array condivisi.

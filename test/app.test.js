@@ -16,7 +16,7 @@ describe("Student Management API", () => {
                 .end((err, res) => {
                     expect(res).to.have.status(200);
                     expect(res.body.status).to.equal("SUCCESS");
-                    expect(res.body.data).to.be.an("array").that.is.not.empty;
+                    expect(res.body.data).to.be.an("array").with.lengthOf(22);
                     done();
                 });
         });
@@ -63,7 +63,7 @@ describe("Student Management API", () => {
                     expect(res).to.have.status(200);
                     expect(res.body.status).to.equal("SUCCESS");
                     expect(res.body.data).to.include(nuovoStudente);
-                    expect(res.body.data.codice).to.equal("stud3");
+                    expect(res.body.data.codice).to.equal("stud23");
                     done();
                 });
         });
